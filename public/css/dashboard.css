@@ -50384,3 +50384,90 @@ a.text-muted:hover {
   -webkit-animation-name: slideIn;
   animation-name: slideIn;
 }
+
+/* Inertia Progress adminLte show*/
+#nprogress .spinner, #nprogress .bar {
+  z-index: 2500 !important;
+}
+
+#nprogress .spinner {
+  top: 17px !important;
+  right: 55px !important;
+}
+
+/* Icon amburguer */
+#nav-icon {
+  width: 25px;
+  height: 24px;
+  margin-top: 5px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+#nav-icon:hover {
+  -webkit-animation: rotateIn ease-in-out 0.8s 1 alternate;
+          animation: rotateIn ease-in-out 0.8s 1 alternate;
+}
+#nav-icon span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+#nav-icon span:nth-child(1) {
+  top: 0px;
+}
+#nav-icon span:nth-child(2) {
+  top: 8px;
+}
+#nav-icon span:nth-child(3) {
+  top: 16px;
+}
+#nav-icon.open span:nth-child(1) {
+  top: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  transform: rotate(135deg);
+}
+#nav-icon.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+#nav-icon.open span:nth-child(3) {
+  top: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  transform: rotate(-135deg);
+}
+
+@-webkit-keyframes rotateIn {
+  from {
+    transform: rotate3d(0, 0, 1, -200deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate3d(0, 0, 1, -200deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.rotateIn {
+  -webkit-animation-name: rotateIn;
+          animation-name: rotateIn;
+  transform-origin: center;
+}

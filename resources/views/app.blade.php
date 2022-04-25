@@ -19,7 +19,11 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="{{ mix('js/dashboard.js') }}" defer></script>
     </head>
-    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed bg-light font-sans antialiased">
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed font-sans antialiased">
+        <div class="preloader">
+            <i class="fas fa-fan fa-spin fa-4x text-success"></i>
+        </div>
+
         @inertia
 
         @env ('local')

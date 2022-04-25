@@ -5,8 +5,12 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <li class="nav-item" @click="animateIcon">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
         </li>
 
         <li class="nav-item">
@@ -17,7 +21,7 @@
       </ul>
 
       <!-- Right navbar links -->
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ml-auto">
         <!-- Team Management -->
         <jet-dropdown id="teamManagementDropdown" classes="nav-item dropdown user-menu">
           <template #trigger>
@@ -121,16 +125,34 @@
             <img :src="$page.props.user.profile_photo_url" class="img-circle elevation-1" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">{{ $page.props.user.name }}</a>
+              <Link :href="route('profile.show')" class="d-block">{{ $page.props.user.name }}</Link>
           </div>
         </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Manage Team
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <jet-nav-link :href="route('teams.show', $page.props.user.current_team)">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>Team Settings</p>
+                        </jet-nav-link>
+                        <jet-nav-link :href="route('teams.create')">
+                            <i class="nav-icon fas fa-user-plus"></i>
+                            <p>Create New Team</p>
+                        </jet-nav-link>
+                    </ul>
+                </li>
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-          </ul>
+            </ul>
         </nav>
         <!-- /.sidebar-menu -->
       </div>
@@ -185,6 +207,7 @@ import JetApplicationMark from '@/Jetstream/ApplicationMark.vue'
 import JetDropdown from '@/Jetstream/Dropdown.vue'
 import JetDropdownLink from '@/Jetstream/DropdownLink.vue'
 import JetNavLink from '@/Jetstream/NavLink.vue'
+import { Link } from '@inertiajs/inertia-vue3'
 import { Head } from '@inertiajs/inertia-vue3'
 
 export default {
@@ -196,6 +219,7 @@ export default {
     JetDropdown,
     JetDropdownLink,
     JetNavLink,
+    Link
   },
 
   props: {
@@ -224,6 +248,10 @@ export default {
     hasSlot (name = 'default') {
       return !!this.$slots[ name ];
     },
+
+    animateIcon() {
+        document.querySelector('#nav-icon').classList.toggle('open');
+    }
   },
 
   computed: {

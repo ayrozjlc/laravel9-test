@@ -1,8 +1,8 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <div class="card shadow bg-light">
-        <div class="card-body bg-white px-5 py-3 border-bottom rounded-top">
+      <div class="card shadow">
+        <div class="card-body px-5 py-3 border-bottom rounded-top">
           <div>
             <jet-application-logo style="width: 317px;" />
           </div>
