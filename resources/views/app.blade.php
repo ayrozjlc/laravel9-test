@@ -20,7 +20,7 @@
         <script src="{{ mix('js/dashboard.js') }}" defer></script>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed font-sans antialiased">
-        <div class="preloader">
+        <div class="preloader flex-column justify-content-center align-items-center">
             <i class="fas fa-fan fa-spin fa-4x text-success"></i>
         </div>
 

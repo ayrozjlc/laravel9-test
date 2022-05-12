@@ -22,6 +22,16 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item" v-if="!isDark">
+            <a class="nav-link" href="#" @click="darkMode">
+                <i class="fas fa-moon"></i>
+            </a>
+        </li>
+        <li class="nav-item" v-if="isDark">
+            <a class="nav-link" href="#" @click="darkMode">
+                <i class="fas fa-sun"></i>
+            </a>
+        </li>
         <!-- Team Management -->
         <jet-dropdown id="teamManagementDropdown" classes="nav-item dropdown user-menu">
           <template #trigger>
@@ -229,7 +239,13 @@ export default {
   data() {
     return {
       showingNavigationDropdown: false,
+      isDark: false
     }
+  },
+
+  created() {
+    const config = localStorage.getItem('config');
+    console.info(JSON.parse(config));
   },
 
   methods: {
@@ -250,7 +266,18 @@ export default {
     },
 
     animateIcon() {
-        document.querySelector('#nav-icon').classList.toggle('open');
+      document.querySelector('#nav-icon').classList.toggle('open');
+    },
+
+    darkMode() {
+      console.info(this.isDark);
+      if (this.isDark) {
+        document.querySelector('body').classList.remove('dark-mode');
+        this.isDark = false;
+      } else {
+        document.querySelector('body').classList.toggle('dark-mode');
+        this.isDark = true;
+      }
     }
   },
 
