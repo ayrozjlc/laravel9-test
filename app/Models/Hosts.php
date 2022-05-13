@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Hosts extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'email',
+        'telefono',
+        'rfc',
+        'razon_social',
+        'es_activo'
+    ];
 }
